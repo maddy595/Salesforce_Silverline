@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name ="SalesforceLogin" verbose="1">
+	<test name = "LoginTest">
+        <classes>
+            <class name="salesforceTestCases.LoginTest"/>
+        </classes>
+	</test>
+	<test name = "AccountTest">
+        <classes>
+            <class name="salesforceTestCases.AccountsTest"/>
+        </classes>
+	</test>
+	<test name = "OpportunityTest">
+        <classes>
+            <class name="salesforceTestCases.OpportunitiesTest"/>
+        </classes>
+	</test>
+</suite>
