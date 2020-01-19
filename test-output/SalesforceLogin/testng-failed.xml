@@ -5,18 +5,6 @@
     <listener class-name="org.uncommons.reportng.HTMLReporter"/>
     <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>
-  <test thread-count="5" name="AccountTest(failed)">
-    <classes>
-      <class name="salesforceTestCases.AccountsTest">
-        <methods>
-          <include name="initialize"/>
-          <include name="tearDown"/>
-          <include name="close"/>
-          <include name="createanAccount"/>
-        </methods>
-      </class> <!-- salesforceTestCases.AccountsTest -->
-    </classes>
-  </test> <!-- AccountTest(failed) -->
   <test thread-count="5" name="OpportunityTest(failed)">
     <classes>
       <class name="salesforceTestCases.OpportunitiesTest">

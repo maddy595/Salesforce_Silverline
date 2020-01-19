@@ -24,7 +24,9 @@ public class LoginTest extends BaseClass {
 	
 	@BeforeClass
 	public void initialize() {
-		initializeExtentReports();
+		//initializeExtentReports();
+		if(extent==null)
+			getInstance();
 		openBrowser("chrome");
 		navigate("Salesforcedevurl");
 		

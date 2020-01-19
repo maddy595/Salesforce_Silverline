@@ -4,9 +4,9 @@
            failures="1"
            errors="0"
            skipped="0"
-           time="69.873">
+           time="69.756">
   <properties />
-            <testcase name="createNewOpportunity" time="50.048" classname="salesforceTestCases.OpportunitiesTest">
+            <testcase name="createNewOpportunity" time="50.056" classname="salesforceTestCases.OpportunitiesTest">
                 <failure type="org.openqa.selenium.NoSuchElementException"
                   message="no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;brandBand_1&apos;]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li/a/div&quot;}
   (Session info: chrome=79.0.3945.117)
@@ -17,7 +17,7 @@ Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, tim
 System info: host: &apos;BDC7-L-72000NF&apos;, ip: &apos;192.168.29.100&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;12.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\MADHAV~1.GAI\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 79.0.3945.117, webStorageEnabled: true}
-Session ID: 1d2eefe1d8f6b7882c878040bde73971
+Session ID: 35cdf76619c96c2995a2e45ab6a8052c
 *** Element info: {Using=xpath, value=//*[@id=&apos;brandBand_1&apos;]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li/a/div}"
               >
 <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id='brandBand_1']/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li/a/div"}
@@ -29,7 +29,7 @@ Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17
 System info: host: 'BDC7-L-72000NF', ip: '192.168.29.100', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '12.0.2'
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\MADHAV~1.GAI\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 79.0.3945.117, webStorageEnabled: true}
-Session ID: 1d2eefe1d8f6b7882c878040bde73971
+Session ID: 35cdf76619c96c2995a2e45ab6a8052c
 *** Element info: {Using=xpath, value=//*[@id='brandBand_1']/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li/a/div}
   java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
   java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
@@ -48,7 +48,7 @@ Session ID: 1d2eefe1d8f6b7882c878040bde73971
   org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
   org.openqa.selenium.By$ByXPath.findElement(By.java:353)
   org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-  salesforceTestCases.OpportunitiesTest.createNewOpportunity(OpportunitiesTest.java:52)
+  salesforceTestCases.OpportunitiesTest.createNewOpportunity(OpportunitiesTest.java:54)
   java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
   java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
   java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -83,6 +83,6 @@ Session ID: 1d2eefe1d8f6b7882c878040bde73971
           </testcase>
   
   
-            <testcase name="goToOpportunitiesPage" time="19.825" classname="salesforceTestCases.OpportunitiesTest" />
+            <testcase name="goToOpportunitiesPage" time="19.700" classname="salesforceTestCases.OpportunitiesTest" />
       
 </testsuite>

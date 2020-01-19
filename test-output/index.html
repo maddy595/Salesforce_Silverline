@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite, 2 failed tests</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -91,7 +91,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">7 methods, 2 failed,   5 passed</span>
+                    <span class="method-stats">7 methods, 1 failed,   6 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title failed">Failed methods</span>
@@ -103,11 +103,6 @@
                       <span>
                         <img src="failed.png" width="3%"/>
                         <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.OpportunitiesTest" class="method navigator-link" hash-for-method="createNewOpportunity">createNewOpportunity</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.AccountsTest" class="method navigator-link" hash-for-method="createanAccount">createanAccount</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content failed suite-SalesforceLogin -->
@@ -127,6 +122,11 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.LoginTest" class="method navigator-link" hash-for-method="VerifySalesOrgTest">VerifySalesOrgTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.AccountsTest" class="method navigator-link" hash-for-method="createanAccount">createanAccount</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -159,48 +159,6 @@
           <div class="suite-SalesforceLogin-class-failed">
             <div class="main-panel-header rounded-window-top">
               <img src="failed.png"/>
-              <span class="class-name">salesforceTestCases.AccountsTest</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="createanAccount">
-                  </a> <!-- createanAccount -->
-                  <span class="method-name">createanAccount</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//*[@id=&apos;brandBand_1&apos;]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li[1]/a&quot;}
-  (Session info: chrome=79.0.3945.117)
-  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.18362 x86_64) (WARNING: The server did not provide any stacktrace information)
-Command duration or timeout: 0 milliseconds
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;BDC7-L-72000NF&apos;, ip: &apos;192.168.29.100&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;12.0.2&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\MADHAV~1.GAI\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 79.0.3945.117, webStorageEnabled: true}
-Session ID: ec7db61cd56331bb6173b6e154365715
-*** Element info: {Using=xpath, value=//*[@id=&apos;brandBand_1&apos;]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li[1]/a}
-	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
-	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
-	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
-	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at salesforceTestCases.AccountsTest.createanAccount(AccountsTest.java:55)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-SalesforceLogin-class-failed -->
-          <div class="suite-SalesforceLogin-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
               <span class="class-name">salesforceTestCases.OpportunitiesTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -218,7 +176,7 @@ Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, tim
 System info: host: &apos;BDC7-L-72000NF&apos;, ip: &apos;192.168.29.100&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;12.0.2&apos;
 Driver info: org.openqa.selenium.chrome.ChromeDriver
 Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\MADHAV~1.GAI\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 79.0.3945.117, webStorageEnabled: true}
-Session ID: 1d2eefe1d8f6b7882c878040bde73971
+Session ID: 35cdf76619c96c2995a2e45ab6a8052c
 *** Element info: {Using=xpath, value=//*[@id=&apos;brandBand_1&apos;]/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li/a/div}
 	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
 	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
@@ -232,7 +190,7 @@ Session ID: 1d2eefe1d8f6b7882c878040bde73971
 	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
 	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
 	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at salesforceTestCases.OpportunitiesTest.createNewOpportunity(OpportunitiesTest.java:52)
+	at salesforceTestCases.OpportunitiesTest.createNewOpportunity(OpportunitiesTest.java:54)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
 ... Removed 32 stack frames
 </div> <!-- stack-trace -->
@@ -246,6 +204,13 @@ Session ID: 1d2eefe1d8f6b7882c878040bde73971
               <span class="class-name">salesforceTestCases.AccountsTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="createanAccount">
+                  </a> <!-- createanAccount -->
+                  <span class="method-name">createanAccount</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
                   <a name="goToAccountPage">
@@ -375,36 +340,36 @@ data.addRows(7);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'SalesforceLogin')
 data.setCell(0, 2, 'salesforceTestCases.LoginTest')
-data.setCell(0, 3, 73446);
+data.setCell(0, 3, 71678);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'createanAccount')
-data.setCell(1, 2, 'salesforceTestCases.AccountsTest')
-data.setCell(1, 3, 50097);
+data.setCell(1, 1, 'createNewOpportunity')
+data.setCell(1, 2, 'salesforceTestCases.OpportunitiesTest')
+data.setCell(1, 3, 50056);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'createNewOpportunity')
+data.setCell(2, 1, 'goToOpportunitiesPage')
 data.setCell(2, 2, 'salesforceTestCases.OpportunitiesTest')
-data.setCell(2, 3, 50048);
+data.setCell(2, 3, 19700);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'goToOpportunitiesPage')
-data.setCell(3, 2, 'salesforceTestCases.OpportunitiesTest')
-data.setCell(3, 3, 19825);
+data.setCell(3, 1, 'goToAccountPage')
+data.setCell(3, 2, 'salesforceTestCases.AccountsTest')
+data.setCell(3, 3, 18659);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'goToAccountPage')
+data.setCell(4, 1, 'createanAccount')
 data.setCell(4, 2, 'salesforceTestCases.AccountsTest')
-data.setCell(4, 3, 17774);
+data.setCell(4, 3, 12475);
 data.setCell(5, 0, 5)
 data.setCell(5, 1, 'logout')
 data.setCell(5, 2, 'salesforceTestCases.LoginTest')
-data.setCell(5, 3, 828);
+data.setCell(5, 3, 855);
 data.setCell(6, 0, 6)
 data.setCell(6, 1, 'VerifySalesOrgTest')
 data.setCell(6, 2, 'salesforceTestCases.LoginTest')
-data.setCell(6, 3, 41);
+data.setCell(6, 3, 42);
 window.suiteTableData['SalesforceLogin']= { tableData: data, tableDiv: 'times-div-SalesforceLogin'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 3 minutes</span>
+              <span class="suite-total-time">Total running time: 2 minutes</span>
               <div id="times-div-SalesforceLogin">
               </div> <!-- times-div-SalesforceLogin -->
             </div> <!-- times-div -->
@@ -437,82 +402,80 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">SalesforceLogin</span>
-                <span class="method-start">26017 ms</span>
+                <span class="method-start">27889 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">VerifySalesOrgTest</span>
-                <span class="method-start">99474 ms</span>
+                <span class="method-start">99576 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">logout</span>
-                <span class="method-start">99520 ms</span>
+                <span class="method-start">99622 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">close</span>
-                <span class="method-start">100353 ms</span>
+                <span class="method-start">100482 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.AccountsTest</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">initialize</span>
-                <span class="method-start">101482 ms</span>
+                <span class="method-start">101605 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">goToAccountPage</span>
-                <span class="method-start">128384 ms</span>
+                <span class="method-start">133816 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">createanAccount</span>
-                <span class="method-start">146162 ms</span>
+                <span class="method-start">152478 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">close</span>
-                <span class="method-start">196269 ms</span>
+                <span class="method-start">164958 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.OpportunitiesTest</div> <!-- chronological-class-name -->
               <div class="configuration-test before">
                 <span class="method-name">initialize</span>
-                <span class="method-start">197383 ms</span>
+                <span class="method-start">166073 ms</span>
               </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">goToOpportunitiesPage</span>
-                <span class="method-start">224190 ms</span>
+                <span class="method-start">192977 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <img src="failed.png">
                 </img>
                 <span class="method-name">createNewOpportunity</span>
-                <span class="method-start">244017 ms</span>
+                <span class="method-start">212679 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">close</span>
-                <span class="method-start">294069 ms</span>
+                <span class="method-start">262741 ms</span>
               </div> <!-- configuration-class after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.LoginTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">295258 ms</span>
+                <span class="method-start">263940 ms</span>
               </div> <!-- configuration-suite after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.AccountsTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">295849 ms</span>
+                <span class="method-start">264550 ms</span>
               </div> <!-- configuration-suite after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.OpportunitiesTest</div> <!-- chronological-class-name -->
               <div class="configuration-suite after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">296064 ms</span>
+                <span class="method-start">264690 ms</span>
               </div> <!-- configuration-suite after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

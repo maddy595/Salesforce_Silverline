@@ -31,9 +31,9 @@ public class BaseClass {
 
 public WebDriver driver;
 public Properties prop;
-public ExtentReports extent;
+public static ExtentReports extent;
 public ExtentTest test;
-public ExtentHtmlReporter reporter;
+public static ExtentHtmlReporter reporter;
 FileInputStream fis ;
 
 	public void initializeExtentReports() {
@@ -41,6 +41,17 @@ FileInputStream fis ;
 	    extent = new ExtentReports();
 	    extent.attachReporter(reporter);	    
 	}
+	
+	public static  ExtentReports getInstance() {
+		
+		reporter=new ExtentHtmlReporter(SalesforceConstants.ScreenshotFilePath);
+	    extent = new ExtentReports();
+	    extent.attachReporter(reporter);
+		
+		return extent ; 
+	}
+	
+	
 
 	public void openBrowser(String bType) {
 		if (prop==null) {

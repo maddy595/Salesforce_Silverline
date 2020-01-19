@@ -22,7 +22,9 @@ public class OpportunitiesTest extends BaseClass{
 	
 	@BeforeTest
 	public void initialize() {
-		initializeExtentReports();
+		//initializeExtentReports();
+		if(extent==null)
+			getInstance();
 		openBrowser("chrome");
 		driver.get("https://ap4.lightning.force.com/lightning/page/home");
 	}
