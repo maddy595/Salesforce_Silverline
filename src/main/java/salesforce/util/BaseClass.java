@@ -18,6 +18,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -27,20 +29,18 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class BaseClass {
 
-public WebDriver driver;
+public static WebDriver driver;
 public Properties prop;
 public ExtentReports extent;
 public ExtentTest test;
 public ExtentHtmlReporter reporter;
 FileInputStream fis ;
 
-public void initializeExtentReports() {
-    reporter=new ExtentHtmlReporter(SalesforceConstants.ScreenshotFilePath);
-    extent = new ExtentReports();
-    extent.attachReporter(reporter);
-  
-    
-}
+	public void initializeExtentReports() {
+	    reporter=new ExtentHtmlReporter(SalesforceConstants.ScreenshotFilePath);
+	    extent = new ExtentReports();
+	    extent.attachReporter(reporter);	    
+	}
 
 	public void openBrowser(String bType) {
 		if (prop==null) {
@@ -56,7 +56,7 @@ public void initializeExtentReports() {
 		  }
 		
 		if (driver==null) {
-		   System.out.println("browser name is " +bType);
+			try {
 			if(bType.equals("chrome")) {
 				System.setProperty("webdriver.chrome.driver", SalesforceConstants.Chrome_Driver_Exe);
 				driver = new ChromeDriver();
@@ -66,7 +66,11 @@ public void initializeExtentReports() {
 			}else if (bType.equals("ie")){
 				System.setProperty("webdriver.ie.driver", SalesforceConstants.IE_Driver_Exe);
 				driver = new InternetExplorerDriver();				
-			}	
+			}
+			}catch(Exception e) {
+				e.printStackTrace();
+				Assert.fail("Unable to Launch browser");
+			}
 		driver.manage().window().maximize();
 		//driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
@@ -74,7 +78,11 @@ public void initializeExtentReports() {
 	}
 	
 	public void navigate(String url) {
+	try {
 		driver.get(prop.getProperty(url));
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
 	}
 	
 	public void type(String xpathEleKey , String email) {
@@ -89,49 +97,72 @@ public void initializeExtentReports() {
 	public WebElement getElement(String locatorKey) {
 		WebElement e = null;
 		try {
-		if(locatorKey.endsWith("_id"))
-		e= driver.findElement(By.id(prop.getProperty(locatorKey)));
-		else if (locatorKey.endsWith("_name"))
-			e= driver.findElement(By.name(prop.getProperty(locatorKey)));
-		else if (locatorKey.endsWith("xpath"))
 			e= driver.findElement(By.xpath(prop.getProperty(locatorKey)));
-		else 
-			reportfailure("Locator not correct - "+locatorKey);
 		}catch(Exception ex) {
 			reportfailure(ex.getMessage());
 			ex.printStackTrace();
-			
 		}
 		return e;
 		
 	}
-	
-	
-	
+
 	/************************Validations***********************/
 	
-	public boolean verifyTitle() {
-		return false;
+	public String getTitle() {
+		try {
+			String title = driver.getTitle();
+			
+			return title;
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public void verifyPageTitle(String ExpectedMessage) {
+		WebDriverWait wait = new WebDriverWait(driver, 30);
+		wait.until(ExpectedConditions.titleIs(driver.getTitle()));
+		String PageTitle=driver.getTitle();
+		System.out.println("Displayed title is " + PageTitle);
+		if(PageTitle.contains(ExpectedMessage)) {
+			test.pass("Title verified successfully");
+		}else {
+			Assert.fail("Expected title is not displayed");
+		}
+		
+	}
+	
+	public void IsLoginSuccessful(String ExpectedText) {
+		//WebDriverWait wait = new WebDriverWait(driver, 30);
+		//wait.until(ExpectedConditions.titleIs(driver.getTitle()));
+		String PageTitle = driver.getTitle();
+		System.out.println("TItle is -> " +PageTitle);
+		List<WebElement> ele = driver.findElements(By.xpath("//*[@id='error']"));
+		if(PageTitle.contains(ExpectedText)) {
+			test.pass("Title verified successfully");
+			System.out.println("Login is Successful");
+		}else if(ele.size()>0) {
+			String errorMessage = driver.findElement(By.xpath("//*[@id='error']")).getText();
+			if(errorMessage.contains("Please check your username and password")) {
+				System.out.println("Unable to login as username or password is incorrect");
+				Assert.fail();
+			}
+		}else {
+			System.out.println("Unable to login to Application");
+			Assert.fail();
+		}
 	}
 	
 	public boolean isElementPresent(String locatorKey) {
 		List<WebElement> elementlist = null;
 		try {
-		if(locatorKey.endsWith("_id"))
-			elementlist= driver.findElements(By.id(prop.getProperty(locatorKey)));
-		else if (locatorKey.endsWith("_name"))
-			elementlist= driver.findElements(By.name(prop.getProperty(locatorKey)));
-		else if (locatorKey.endsWith("xpath"))
 			elementlist= driver.findElements(By.xpath(prop.getProperty(locatorKey)));
-		else {
-		//	reportfailure("Locator not correct - "+locatorKey);
-		}
 		if(elementlist.size()==0)
 			return false;
 		else
 			return true;
 		}catch(Exception ex) {
-		//	reportfailure(ex.getMessage());
 			ex.printStackTrace();
 			Assert.fail();
 		}
@@ -139,13 +170,14 @@ public void initializeExtentReports() {
 		
 	}
 	
-	public boolean verifyText(String locatorKey,String ExpectedTextKey) {
+	public void verifyText(String locatorKey,String ExpectedText) {
 		String actualText=getElement(locatorKey).getText().trim();
-		String ExpectedText=prop.getProperty("ExpectedTextKey");
-		if (actualText.equals(ExpectedText))
-		return true;
+		
+		if (actualText.contains(ExpectedText))
+			test.pass("Org verified successfully");
 		else
-			return false;
+		//Assert.fail();
+		test.log(Status.FAIL, "Org verification failed");
 	}
 
     /****************************reporting************************/

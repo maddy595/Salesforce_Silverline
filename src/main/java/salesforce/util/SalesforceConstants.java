@@ -9,4 +9,8 @@ public class SalesforceConstants {
 	public static String ScreenshotFilePath= System.getProperty("user.dir")+"\\ReportsandScreenshots\\LoginReport.html";
 	public static String PropertiesFile= System.getProperty("user.dir")+"\\src\\main\\java\\salesforce\\util\\common.properties";
 
+	public static String LoginPagetitle="Login | Salesforce";
+	public static String HomePagetitle="Lightning Experience";
+	public static String OrgName="Sales";
+	
 }

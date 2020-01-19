@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -16,42 +17,49 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import salesforce.util.BaseClass;
+import salesforce.util.SalesforceConstants;
 
 public class LoginTest extends BaseClass {
 	
-	@BeforeTest
+	@BeforeClass
 	public void initialize() {
 		initializeExtentReports();
 		openBrowser("chrome");
-		driver.get("https://ap4.lightning.force.com/lightning/page/home");
+		navigate("Salesforcedevurl");
+		
 	}
 	
 	@Test(priority=1)
 	public void SalesforceLogin() {
 		test=extent.createTest("Login to Salesforce");
 		test.log(Status.INFO, "Will login to the application");
-		
-		System.out.println(driver.getTitle());
-		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("madhav.gaikwad@acc.com");
-		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("p@sword123");	
-		driver.findElement(By.xpath("//*[@id='Login']")).click();
-		System.out.println("Login1");
-		
+		System.out.println(SalesforceConstants.LoginPagetitle);
+		verifyPageTitle(SalesforceConstants.LoginPagetitle);
+		type("usernameTextbox", "madhav.gaikwad@acc.com");
+		type("passwordTextbox", "p@sword123");
+		click("Loginbutton");
+		IsLoginSuccessful(SalesforceConstants.HomePagetitle);
 	}
 	
 	@Test(priority=2)
-	public void HomePageTest() {
-		test=extent.createTest("HomePageTest");
-		System.out.println(driver.getTitle());
-		test.log(Status.INFO, "Got the title");
+	public void VerifySalesOrgTest() { 
+		test=extent.createTest("Home Page title Verification");
+		test.log(Status.INFO, "Will verify Home Page title");
+		verifyText("OrgName", SalesforceConstants.OrgName);
+	}
+	
+	@Test(priority=3)
+	public void logout() {
+		test=extent.createTest("Logout Test");
+		test.log(Status.INFO, "Will Logout from application");
+		click("profilelink");
+		click("logoutlink");
 		
 	}
 	
-
-	
-	@AfterTest
+	@AfterClass
 	public void tearDown(){
-		
+		extent.flush();
 		driver.quit();
 	}
 	
