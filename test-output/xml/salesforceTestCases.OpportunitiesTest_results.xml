@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="OpportunityTest"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="20.246">
+  <properties />
+  
+  
+            <testcase name="goToOpportunitiesPage" time="10.887" classname="salesforceTestCases.OpportunitiesTest" />
+                <testcase name="createNewOpportunity" time="9.359" classname="salesforceTestCases.OpportunitiesTest" />
+      
+</testsuite>

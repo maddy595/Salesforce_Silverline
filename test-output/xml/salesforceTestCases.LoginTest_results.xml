@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LoginTest"
+           tests="2"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="10.247">
+  <properties />
+  
+  
+            <testcase name="HomePageTest" time="3.520" classname="salesforceTestCases.LoginTest" />
+                <testcase name="SalesforceLogin" time="6.727" classname="salesforceTestCases.LoginTest" />
+      
+</testsuite>

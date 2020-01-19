@@ -24,7 +24,7 @@
     <div class="top-banner-root">
       <span class="top-banner-title-font">Test results</span>
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -38,7 +38,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-SalesforceLogin" class="navigator-link">
-              <span class="suite-name border-passed">SalesforceLogin</span>
+              <span class="suite-name border-failed">SalesforceLogin</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -91,7 +91,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">6 methods,   6 passed</span>
+                    <span class="method-stats">6 methods, 1 failed,   5 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-SalesforceLogin" class="hide-methods failed suite-SalesforceLogin"> (hide)</a> <!-- hide-methods failed suite-SalesforceLogin -->
+                      <a href="#" panel-name="suite-SalesforceLogin" class="show-methods failed suite-SalesforceLogin"> (show)</a> <!-- show-methods failed suite-SalesforceLogin -->
+                    </span>
+                    <div class="method-list-content failed suite-SalesforceLogin">
+                      <span>
+                        <img src="failed.png" width="3%"/>
+                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.AccountsTest" class="method navigator-link" hash-for-method="createanAccount">createanAccount</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content failed suite-SalesforceLogin -->
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -102,17 +116,17 @@
                     <div class="method-list-content passed suite-SalesforceLogin">
                       <span>
                         <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.LoginTest" class="method navigator-link" hash-for-method="Login2">Login2</a> <!-- method navigator-link -->
+                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.LoginTest" class="method navigator-link" hash-for-method="HomePageTest">HomePageTest</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.LoginTest" class="method navigator-link" hash-for-method="SalesforceLogin">SalesforceLogin</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.OpportunitiesTest" class="method navigator-link" hash-for-method="createNewOpportunity">createNewOpportunity</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.AccountsTest" class="method navigator-link" hash-for-method="createanAccount">createanAccount</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                       <span>
@@ -123,11 +137,6 @@
                       <span>
                         <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.OpportunitiesTest" class="method navigator-link" hash-for-method="goToOpportunitiesPage">goToOpportunitiesPage</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="passed.png" width="3%"/>
-                        <a href="#" panel-name="suite-SalesforceLogin" title="salesforceTestCases.LoginTest" class="method navigator-link" hash-for-method="login1">login1</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-SalesforceLogin -->
@@ -142,9 +151,9 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-SalesforceLogin" class="panel SalesforceLogin">
-          <div class="suite-SalesforceLogin-class-passed">
+          <div class="suite-SalesforceLogin-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
+              <img src="failed.png"/>
               <span class="class-name">salesforceTestCases.AccountsTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
@@ -153,17 +162,33 @@
                   <a name="createanAccount">
                   </a> <!-- createanAccount -->
                   <span class="method-name">createanAccount</span>
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="goToAccountPage">
-                  </a> <!-- goToAccountPage -->
-                  <span class="method-name">goToAccountPage</span>
+                  <div class="stack-trace">org.openqa.selenium.ElementNotVisibleException: element not visible
+  (Session info: chrome=79.0.3945.117)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.18362 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;BDC7-L-72000NF&apos;, ip: &apos;10.232.97.233&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;12.0.2&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\MADHAV~1.GAI\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 79.0.3945.117, webStorageEnabled: true}
+Session ID: 0a06bc3e767f91bc6c1c49eba41f12a3
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:285)
+	at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:84)
+	at salesforceTestCases.AccountsTest.createanAccount(AccountsTest.java:57)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+... Removed 32 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-SalesforceLogin-class-passed -->
+          </div> <!-- suite-SalesforceLogin-class-failed -->
           <div class="suite-SalesforceLogin-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -189,21 +214,36 @@
           <div class="suite-SalesforceLogin-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
+              <span class="class-name">salesforceTestCases.AccountsTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="goToAccountPage">
+                  </a> <!-- goToAccountPage -->
+                  <span class="method-name">goToAccountPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-SalesforceLogin-class-passed -->
+          <div class="suite-SalesforceLogin-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
               <span class="class-name">salesforceTestCases.LoginTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="Login2">
-                  </a> <!-- Login2 -->
-                  <span class="method-name">Login2</span>
+                  <a name="HomePageTest">
+                  </a> <!-- HomePageTest -->
+                  <span class="method-name">HomePageTest</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
-                  <a name="login1">
-                  </a> <!-- login1 -->
-                  <span class="method-name">login1</span>
+                  <a name="SalesforceLogin">
+                  </a> <!-- SalesforceLogin -->
+                  <span class="method-name">SalesforceLogin</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -218,6 +258,10 @@
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
 &lt;suite name=&quot;SalesforceLogin&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;org.uncommons.reportng.HTMLReporter&quot;/&gt;
+    &lt;listener class-name=&quot;org.uncommons.reportng.JUnitXMLReporter&quot;/&gt;
+  &lt;/listeners&gt;
   &lt;test thread-count=&quot;5&quot; name=&quot;LoginTest&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;salesforceTestCases.LoginTest&quot;/&gt;
@@ -278,34 +322,34 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(6);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'createanAccount')
+data.setCell(0, 1, 'goToAccountPage')
 data.setCell(0, 2, 'salesforceTestCases.AccountsTest')
-data.setCell(0, 3, 8817);
+data.setCell(0, 3, 12795);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'goToOpportunitiesPage')
 data.setCell(1, 2, 'salesforceTestCases.OpportunitiesTest')
-data.setCell(1, 3, 6895);
+data.setCell(1, 3, 10887);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'login1')
-data.setCell(2, 2, 'salesforceTestCases.LoginTest')
-data.setCell(2, 3, 6610);
+data.setCell(2, 1, 'createNewOpportunity')
+data.setCell(2, 2, 'salesforceTestCases.OpportunitiesTest')
+data.setCell(2, 3, 9359);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'goToAccountPage')
+data.setCell(3, 1, 'createanAccount')
 data.setCell(3, 2, 'salesforceTestCases.AccountsTest')
-data.setCell(3, 3, 5849);
+data.setCell(3, 3, 6728);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'createNewOpportunity')
-data.setCell(4, 2, 'salesforceTestCases.OpportunitiesTest')
-data.setCell(4, 3, 5713);
+data.setCell(4, 1, 'SalesforceLogin')
+data.setCell(4, 2, 'salesforceTestCases.LoginTest')
+data.setCell(4, 3, 6727);
 data.setCell(5, 0, 5)
-data.setCell(5, 1, 'Login2')
+data.setCell(5, 1, 'HomePageTest')
 data.setCell(5, 2, 'salesforceTestCases.LoginTest')
-data.setCell(5, 3, 58);
+data.setCell(5, 3, 3520);
 window.suiteTableData['SalesforceLogin']= { tableData: data, tableDiv: 'times-div-SalesforceLogin'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 33 seconds</span>
+              <span class="suite-total-time">Total running time: 50 seconds</span>
               <div id="times-div-SalesforceLogin">
               </div> <!-- times-div-SalesforceLogin -->
             </div> <!-- times-div -->
@@ -332,60 +376,62 @@ return data;
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.LoginTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
+              <div class="configuration-test before">
                 <span class="method-name">initialize</span>
                 <span class="method-start">0 ms</span>
-              </div> <!-- configuration-class before -->
+              </div> <!-- configuration-test before -->
               <div class="test-method">
-                <span class="method-name">login1</span>
-                <span class="method-start">24094 ms</span>
+                <span class="method-name">SalesforceLogin</span>
+                <span class="method-start">35802 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <span class="method-name">Login2</span>
-                <span class="method-start">30716 ms</span>
+                <span class="method-name">HomePageTest</span>
+                <span class="method-start">42547 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class after">
+              <div class="configuration-test after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">30779 ms</span>
-              </div> <!-- configuration-class after -->
+                <span class="method-start">46073 ms</span>
+              </div> <!-- configuration-test after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.AccountsTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
+              <div class="configuration-test before">
                 <span class="method-name">initialize</span>
-                <span class="method-start">32009 ms</span>
-              </div> <!-- configuration-class before -->
+                <span class="method-start">47603 ms</span>
+              </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">goToAccountPage</span>
-                <span class="method-start">53730 ms</span>
+                <span class="method-start">82930 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
+                <img src="failed.png">
+                </img>
                 <span class="method-name">createanAccount</span>
-                <span class="method-start">59583 ms</span>
+                <span class="method-start">95728 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class after">
+              <div class="configuration-test after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">68405 ms</span>
-              </div> <!-- configuration-class after -->
+                <span class="method-start">102470 ms</span>
+              </div> <!-- configuration-test after -->
             </div> <!-- chronological-class -->
             <div class="chronological-class">
               <div class="chronological-class-name">salesforceTestCases.OpportunitiesTest</div> <!-- chronological-class-name -->
-              <div class="configuration-class before">
+              <div class="configuration-test before">
                 <span class="method-name">initialize</span>
-                <span class="method-start">69739 ms</span>
-              </div> <!-- configuration-class before -->
+                <span class="method-start">104065 ms</span>
+              </div> <!-- configuration-test before -->
               <div class="test-method">
                 <span class="method-name">goToOpportunitiesPage</span>
-                <span class="method-start">92790 ms</span>
+                <span class="method-start">138551 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">createNewOpportunity</span>
-                <span class="method-start">99687 ms</span>
+                <span class="method-start">149441 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class after">
+              <div class="configuration-test after">
                 <span class="method-name">tearDown</span>
-                <span class="method-start">105402 ms</span>
-              </div> <!-- configuration-class after -->
+                <span class="method-start">158802 ms</span>
+              </div> <!-- configuration-test after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

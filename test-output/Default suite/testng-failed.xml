@@ -6,8 +6,9 @@
       <class name="salesforceTestCases.LoginTest">
         <methods>
           <include name="tearDown"/>
-          <include name="init"/>
+          <include name="login1"/>
           <include name="Login2"/>
+          <include name="initialize"/>
         </methods>
       </class> <!-- salesforceTestCases.LoginTest -->
     </classes>

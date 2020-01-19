@@ -10,9 +10,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.Status;
 
 import salesforce.util.BaseClass;
 
@@ -20,29 +24,34 @@ import salesforce.util.BaseClass;
 public class AccountsTest extends BaseClass{
 	
 	
-	@BeforeClass
+	@BeforeTest
 	public void initialize() {
-		init("chrome");
+		initializeExtentReports();
+		openBrowser("chrome");
 		driver.get("https://ap4.lightning.force.com/lightning/page/home");
 	}
 	
 	@Test(priority=1)
 	public void goToAccountPage() {
+		test=extent.createTest("NavigatetoAccountListPage");
 		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("madhav.gaikwad@acc.com");
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("p@sword123");	
 		driver.findElement(By.xpath("//*[@id='Login']")).click();
 		WebElement accountlink = driver.findElement(By.xpath("//*[@title='Accounts']"));
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", accountlink);
+		System.out.println(driver.getTitle());
 	}
 	
 	@Test(priority=2)
 	public void createanAccount() {
-		driver.findElement(By.xpath("//*[@id='brandBand_1']/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li[1]/a")).click();
+		test=extent.createTest("NewAccountCreationTest");
 		
 		WebDriverWait wait = new WebDriverWait(driver, 40);
-		//Active dropdown
 		Actions act = new Actions(driver);
+		test.log(Status.INFO, "New Account will be created");
+		//Active dropdown
+		driver.findElement(By.xpath("//*[@id='brandBand_1']/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li[1]/a")).click();
 		WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'Active')]/..//following::div[1]/div/div/div/a"));
 		act.moveToElement(ele).click().perform();
 		driver.findElement(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a[2]")).click();
@@ -88,13 +97,13 @@ public class AccountsTest extends BaseClass{
 		driver.findElement(By.xpath("//div/div[2]/table/tbody/tr[3]/td[5]/span")).click();
 		driver.findElement(By.xpath("//*[text()='SLA Serial Number']/..//following::input[1]")).sendKeys("Aewfbr5431");
 		driver.findElement(By.xpath("//div/div/div[2]/div/div/button[3]/span")).click();
-		
-		
+		test.log(Status.INFO, "Account woudl be created");
 		
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void tearDown(){
+		
 		driver.quit();
 	}
 	

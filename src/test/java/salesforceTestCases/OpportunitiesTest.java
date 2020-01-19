@@ -7,33 +7,43 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.Status;
 
 import salesforce.util.BaseClass;
 
 
 public class OpportunitiesTest extends BaseClass{
 	
-	@BeforeClass
+	@BeforeTest
 	public void initialize() {
-		init("chrome");
+		initializeExtentReports();
+		openBrowser("chrome");
 		driver.get("https://ap4.lightning.force.com/lightning/page/home");
 	}
 	
 	@Test(priority=1)
 	public void goToOpportunitiesPage() {
+		test=extent.createTest("OpportunityListTest");
+		
 		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("madhav.gaikwad@acc.com");
 		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("p@sword123");	
 		driver.findElement(By.xpath("//*[@id='Login']")).click();
+		test.log(Status.INFO, "Logged in to the application");
 		WebElement Opptylink = driver.findElement(By.xpath("//*[@title='Opportunities']"));
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", Opptylink);
+		test.log(Status.INFO, "Opportunity Link is clicked");
 	}
 	
 	@Test(priority=2)
 	public void createNewOpportunity() {
-
+		test=extent.createTest("OpportunityCreationTest");
+		test.log(Status.INFO, "New Opportunity will be created");
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		Actions act = new Actions(driver);
 		//Click on New Opportunity
@@ -51,8 +61,9 @@ public class OpportunitiesTest extends BaseClass{
 		
 	}
 	
-	@AfterClass
+	@AfterTest
 	public void tearDown(){
+		extent.flush();
 		driver.quit();
 	}
 	

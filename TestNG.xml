@@ -2,6 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name ="SalesforceLogin" verbose="1">
+	
+<listeners>
+	<listener class-name="org.uncommons.reportng.HTMLReporter" />
+	<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+</listeners>
+
 	<test name = "LoginTest">
         <classes>
             <class name="salesforceTestCases.LoginTest"/>
@@ -17,4 +23,5 @@
             <class name="salesforceTestCases.OpportunitiesTest"/>
         </classes>
 	</test>
+	
 </suite>
