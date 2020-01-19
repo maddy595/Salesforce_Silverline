@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -101,10 +102,15 @@ public class AccountsTest extends BaseClass{
 		
 	}
 	
-	@AfterTest
-	public void tearDown(){
-		
+	@AfterClass
+	public void close(){
 		driver.quit();
+	}
+	
+	@AfterSuite
+	public void tearDown(){
+		extent.flush();
+		
 	}
 	
 }

@@ -11,9 +11,22 @@
         <methods>
           <include name="initialize"/>
           <include name="tearDown"/>
+          <include name="close"/>
           <include name="createanAccount"/>
         </methods>
       </class> <!-- salesforceTestCases.AccountsTest -->
     </classes>
   </test> <!-- AccountTest(failed) -->
+  <test thread-count="5" name="OpportunityTest(failed)">
+    <classes>
+      <class name="salesforceTestCases.OpportunitiesTest">
+        <methods>
+          <include name="createNewOpportunity"/>
+          <include name="tearDown"/>
+          <include name="initialize"/>
+          <include name="close"/>
+        </methods>
+      </class> <!-- salesforceTestCases.OpportunitiesTest -->
+    </classes>
+  </test> <!-- OpportunityTest(failed) -->
 </suite> <!-- Failed suite [SalesforceLogin] -->

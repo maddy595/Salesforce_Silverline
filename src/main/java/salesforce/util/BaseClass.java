@@ -29,7 +29,7 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
 public class BaseClass {
 
-public static WebDriver driver;
+public WebDriver driver;
 public Properties prop;
 public ExtentReports extent;
 public ExtentTest test;

@@ -7,6 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -38,6 +39,7 @@ public class OpportunitiesTest extends BaseClass{
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", Opptylink);
 		test.log(Status.INFO, "Opportunity Link is clicked");
+		
 	}
 	
 	@Test(priority=2)
@@ -61,10 +63,17 @@ public class OpportunitiesTest extends BaseClass{
 		
 	}
 	
-	@AfterTest
+	
+	
+	@AfterClass
+	public void close(){
+		driver.quit();
+	}
+	
+	@AfterSuite
 	public void tearDown(){
 		extent.flush();
-		driver.quit();
+		
 	}
 	
 }

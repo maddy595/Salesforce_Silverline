@@ -8,6 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -58,9 +59,14 @@ public class LoginTest extends BaseClass {
 	}
 	
 	@AfterClass
+	public void close(){
+		driver.quit();
+	}
+	
+	@AfterSuite
 	public void tearDown(){
 		extent.flush();
-		driver.quit();
+		
 	}
 	
 
