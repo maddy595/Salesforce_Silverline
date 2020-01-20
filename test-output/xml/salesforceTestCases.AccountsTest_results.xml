@@ -4,12 +4,12 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="90.178">
+           time="86.231">
   <properties />
   
   
-            <testcase name="createanAccount" time="15.629" classname="salesforceTestCases.AccountsTest" />
-                <testcase name="goToAccountPage" time="67.460" classname="salesforceTestCases.AccountsTest" />
-                <testcase name="DeleteanAccount" time="7.089" classname="salesforceTestCases.AccountsTest" />
+            <testcase name="goToAccountPage" time="66.209" classname="salesforceTestCases.AccountsTest" />
+                <testcase name="DeleteanAccount" time="8.342" classname="salesforceTestCases.AccountsTest" />
+                <testcase name="createanAccount" time="11.680" classname="salesforceTestCases.AccountsTest" />
       
 </testsuite>

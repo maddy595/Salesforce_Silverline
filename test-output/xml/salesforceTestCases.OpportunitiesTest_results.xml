@@ -4,12 +4,12 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="84.250">
+           time="110.242">
   <properties />
   
   
-            <testcase name="DeleteOpportunity" time="5.505" classname="salesforceTestCases.OpportunitiesTest" />
-                <testcase name="goToOpportunitiesPage" time="67.860" classname="salesforceTestCases.OpportunitiesTest" />
-                <testcase name="createNewOpportunity" time="10.885" classname="salesforceTestCases.OpportunitiesTest" />
+            <testcase name="DeleteOpportunity" time="9.352" classname="salesforceTestCases.OpportunitiesTest" />
+                <testcase name="goToOpportunitiesPage" time="64.681" classname="salesforceTestCases.OpportunitiesTest" />
+                <testcase name="createNewOpportunity" time="36.209" classname="salesforceTestCases.OpportunitiesTest" />
       
 </testsuite>

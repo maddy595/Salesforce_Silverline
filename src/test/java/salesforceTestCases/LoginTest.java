@@ -45,7 +45,9 @@ public class LoginTest extends BaseClass {
 	public void VerifySalesOrgTest() { 
 		test=extent.createTest("Home Page title Verification");
 		test.log(Status.INFO, "Will verify Home Page title");
-		verifyText("OrgName", SalesforceConstants.OrgName);
+		Assert.assertTrue(isElementPresent("OrgName"));		
+		test.pass("Org verified successfully");
+		
 	}
 	
 	@Test(priority=3)

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -121,14 +122,16 @@ public class AccountsTest extends BaseClass{
 			waitfor(3000);
 			wai.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[text()='Delete']")))).click();
 			waitfor(2000);
-			if(!AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
+			if(AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
 				test.pass("Account is Deleted Successfully");
 				test.log(Status.INFO, "Account is deleted successfully");
 			}else {
 				test.fail("Account Deletion Failed");
+				Assert.fail();
 			}
 		}else {
 			test.fail("Account Deletion Failed");
+			Assert.fail();
 		}
 	}
 	
