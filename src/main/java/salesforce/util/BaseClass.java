@@ -135,7 +135,7 @@ FileInputStream fis ;
 		if(PageTitle.contains(ExpectedMessage)) {
 			test.pass("Title verified successfully");
 		}else {
-			Assert.fail("Expected title is not displayed");
+			test.fail("Title not verified successfully");
 		}
 	}
 	
@@ -148,14 +148,14 @@ FileInputStream fis ;
 			return true;
 		}else {
 			test.fail("Verification failed");
-			Assert.fail("Expected title is not displayed");
+			Assert.fail("Expected text is not displayed");
 			return false;
 		}
 	}
 	
-	public void hardwait() {
+	public void waitfor(int time) {
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -163,8 +163,6 @@ FileInputStream fis ;
 	}
 	
 	public void IsLoginSuccessful(String ExpectedText) {
-		//WebDriverWait wait = new WebDriverWait(driver, 30);
-		//wait.until(ExpectedConditions.titleIs(driver.getTitle()));
 		String PageTitle = driver.getTitle();
 		System.out.println("TItle is -> " +PageTitle);
 		List<WebElement> ele = driver.findElements(By.xpath("//*[@id='error']"));
@@ -201,12 +199,12 @@ FileInputStream fis ;
 	
 	public void verifyText(String locatorKey,String ExpectedText) {
 		String actualText=getElement(locatorKey).getText().trim();
-		
-		if (actualText.contains(ExpectedText))
+		if (actualText.contains(ExpectedText)) {
 			test.pass("Org verified successfully");
-		else
-		//Assert.fail();
+		}else {
 		test.log(Status.FAIL, "Org verification failed");
+		test.fail("Org verification failed");
+		}
 	}
 
     /****************************reporting************************/

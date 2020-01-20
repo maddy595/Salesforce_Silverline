@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuite name="OpportunityTest"
-           tests="2"
+           tests="3"
            failures="0"
            errors="0"
            skipped="0"
-           time="14.196">
+           time="84.250">
   <properties />
   
   
-            <testcase name="createNewOpportunity" time="7.007" classname="salesforceTestCases.OpportunitiesTest" />
-                <testcase name="goToOpportunitiesPage" time="7.189" classname="salesforceTestCases.OpportunitiesTest" />
+            <testcase name="DeleteOpportunity" time="5.505" classname="salesforceTestCases.OpportunitiesTest" />
+                <testcase name="goToOpportunitiesPage" time="67.860" classname="salesforceTestCases.OpportunitiesTest" />
+                <testcase name="createNewOpportunity" time="10.885" classname="salesforceTestCases.OpportunitiesTest" />
       
 </testsuite>

@@ -24,19 +24,14 @@ import com.aventstack.extentreports.Status;
 import salesforce.util.BaseClass;
 import salesforce.util.SalesforceConstants;
 
-
 public class AccountsTest extends BaseClass{
-	
-	
-	
+
 	@BeforeClass
 	public void initialize() {
-		//initializeExtentReports();
 		if(extent==null)
 			getInstance();
 		openBrowser("chrome");
-		navigate("Salesforcedevurl");
-		
+		navigate("Salesforcedevurl");	
 	}
 	
 	@Test(priority=1)
@@ -65,7 +60,6 @@ public class AccountsTest extends BaseClass{
 		//Active dropdown
 		WebElement ActiveDropdown = getElement("Active_dropdownlink");
 		act.moveToElement(ActiveDropdown).click().perform();
-		//driver.findElement(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a[2]")).click();
 		//GetElementfrom dropdown
 		List<WebElement> elem = driver.findElements(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a"));
 		System.out.println(elem.size());
@@ -117,18 +111,16 @@ public class AccountsTest extends BaseClass{
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", Opptylink);
 		executor.executeScript("arguments[0].click();", accountlink);
-		hardwait();
+		waitfor(2000);
 		WebElement AccountName = getElement("AccountlistTitle");
 		wai.until(ExpectedConditions.refreshed(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/div/table/tbody/tr[1]/th/span/a"))));
 		String AccountText=AccountName.getText();
-		System.out.println("AccountText -> " +AccountText);
 		if(AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
 			driver.findElement(By.xpath("//div/div/table/tbody/tr[1]/th/span/a/../..//following::td[4]/span/div")).click();
 			driver.findElement(By.xpath("//ul[@class='scrollable']/li[2]/a[@title='Delete']")).click();
-			JavascriptExecutor js = (JavascriptExecutor)driver;
-			
+			waitfor(3000);
 			wai.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[text()='Delete']")))).click();
-			hardwait();	
+			waitfor(2000);
 			if(!AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
 				test.pass("Account is Deleted Successfully");
 				test.log(Status.INFO, "Account is deleted successfully");
@@ -136,7 +128,6 @@ public class AccountsTest extends BaseClass{
 				test.fail("Account Deletion Failed");
 			}
 		}else {
-			System.out.println("Created record not available");
 			test.fail("Account Deletion Failed");
 		}
 	}
@@ -150,7 +141,6 @@ public class AccountsTest extends BaseClass{
 	@AfterSuite
 	public void tearDown(){
 		extent.flush();
-		
 	}
 	
 }

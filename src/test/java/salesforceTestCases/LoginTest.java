@@ -24,19 +24,16 @@ public class LoginTest extends BaseClass {
 	
 	@BeforeClass
 	public void initialize() {
-		//initializeExtentReports();
 		if(extent==null)
 			getInstance();
 		openBrowser("chrome");
-		navigate("Salesforcedevurl");
-		
+		navigate("Salesforcedevurl");	
 	}
 	
 	@Test(priority=1)
 	public void SalesforceLogin() {
 		test=extent.createTest("Login to Salesforce");
 		test.log(Status.INFO, "Will login to the application");
-		System.out.println(SalesforceConstants.LoginPagetitle);
 		verifyPageTitle(SalesforceConstants.LoginPagetitle);
 		type("usernameTextbox", "madhav.gaikwad@acc.com");
 		type("passwordTextbox", "p@sword123");
@@ -57,7 +54,7 @@ public class LoginTest extends BaseClass {
 		test.log(Status.INFO, "Will Logout from application");
 		click("profilelink");
 		click("logoutlink");
-		
+		test.pass("Logout Successfully");
 	}
 	
 	@AfterClass
