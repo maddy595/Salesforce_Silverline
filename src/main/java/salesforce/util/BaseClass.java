@@ -42,7 +42,7 @@ FileInputStream fis ;
 	    extent.attachReporter(reporter);	    
 	}
 	
-	public static  ExtentReports getInstance() {
+	public static ExtentReports getInstance() {
 		
 		reporter=new ExtentHtmlReporter(SalesforceConstants.ScreenshotFilePath);
 	    extent = new ExtentReports();
@@ -51,8 +51,6 @@ FileInputStream fis ;
 		return extent ; 
 	}
 	
-	
-
 	public void openBrowser(String bType) {
 		if (prop==null) {
 			try {
@@ -83,7 +81,6 @@ FileInputStream fis ;
 				Assert.fail("Unable to Launch browser");
 			}
 		driver.manage().window().maximize();
-		//driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 		}
 	}
@@ -132,16 +129,37 @@ FileInputStream fis ;
 	}
 	
 	public void verifyPageTitle(String ExpectedMessage) {
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.titleIs(driver.getTitle()));
 		String PageTitle=driver.getTitle();
-		System.out.println("Displayed title is " + PageTitle);
 		if(PageTitle.contains(ExpectedMessage)) {
 			test.pass("Title verified successfully");
 		}else {
 			Assert.fail("Expected title is not displayed");
 		}
-		
+	}
+	
+	public boolean verify(WebElement elem, String ExpectedText) {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(elem));
+		String ElementText=elem.getText();
+		if(ElementText.contains(ExpectedText)) {
+			test.pass("Verification successfully completed");
+			return true;
+		}else {
+			test.fail("Verification failed");
+			Assert.fail("Expected title is not displayed");
+			return false;
+		}
+	}
+	
+	public void hardwait() {
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void IsLoginSuccessful(String ExpectedText) {

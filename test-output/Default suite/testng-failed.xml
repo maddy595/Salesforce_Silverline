@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="salesforceTestCases.LoginTest">
+      <class name="salesforceTestCases.AccountsTest">
         <methods>
-          <include name="tearDown"/>
-          <include name="HomePageTest"/>
           <include name="initialize"/>
+          <include name="tearDown"/>
+          <include name="DeleteanAccount"/>
+          <include name="close"/>
         </methods>
-      </class> <!-- salesforceTestCases.LoginTest -->
+      </class> <!-- salesforceTestCases.AccountsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

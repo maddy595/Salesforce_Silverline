@@ -1,5 +1,7 @@
 package salesforceTestCases;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -20,89 +22,125 @@ import org.testng.annotations.Test;
 import com.aventstack.extentreports.Status;
 
 import salesforce.util.BaseClass;
+import salesforce.util.SalesforceConstants;
 
 
 public class AccountsTest extends BaseClass{
 	
 	
-	@BeforeTest
+	
+	@BeforeClass
 	public void initialize() {
 		//initializeExtentReports();
 		if(extent==null)
 			getInstance();
 		openBrowser("chrome");
-		driver.get("https://ap4.lightning.force.com/lightning/page/home");
+		navigate("Salesforcedevurl");
+		
 	}
 	
 	@Test(priority=1)
 	public void goToAccountPage() {
 		test=extent.createTest("NavigatetoAccountListPage");
-		driver.findElement(By.xpath("//*[@id='username']")).sendKeys("madhav.gaikwad@acc.com");
-		driver.findElement(By.xpath("//*[@id='password']")).sendKeys("p@sword123");	
-		driver.findElement(By.xpath("//*[@id='Login']")).click();
-		WebElement accountlink = driver.findElement(By.xpath("//*[@title='Accounts']"));
+		test.log(Status.INFO, "Navigate to Accounts List Page");
+		verifyPageTitle(SalesforceConstants.LoginPagetitle);
+		type("usernameTextbox", "madhav.gaikwad@acc.com");
+		type("passwordTextbox", "p@sword123");
+		click("Loginbutton");
+		IsLoginSuccessful(SalesforceConstants.HomePagetitle);
+		WebElement accountlink = getElement("AccounttopHatLink");
 		JavascriptExecutor executor = (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", accountlink);
-		System.out.println(driver.getTitle());
+		
 	}
 	
 	@Test(priority=2)
 	public void createanAccount() {
 		test=extent.createTest("NewAccountCreationTest");
-		
+		test.log(Status.INFO, "New Account will be created");
 		WebDriverWait wait = new WebDriverWait(driver, 40);
 		Actions act = new Actions(driver);
-		test.log(Status.INFO, "New Account will be created");
+		//New Account Link
+		click("NewAccountLink");
 		//Active dropdown
-		driver.findElement(By.xpath("//*[@id='brandBand_1']/div/div[1]/div[2]/div/div/div[1]/div[1]/div[2]/ul/li[1]/a")).click();
-		WebElement ele = driver.findElement(By.xpath("//span[contains(text(),'Active')]/..//following::div[1]/div/div/div/a"));
-		act.moveToElement(ele).click().perform();
-		driver.findElement(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a[2]")).click();
-		//List<WebElement> elem = driver.findElements(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']/a"));
-		//for(int i=0; i<elem.size();i++) {
-		//if(elem.get(i).getText().contains("Yes")) {
-				//.getAttribute("title").contains("Yes")) {
-			//elem.get(i).click();
-			//System.out.println("Element is clicked");
-			//break;
-		//}
+		WebElement ActiveDropdown = getElement("Active_dropdownlink");
+		act.moveToElement(ActiveDropdown).click().perform();
+		//driver.findElement(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a[2]")).click();
+		//GetElementfrom dropdown
+		List<WebElement> elem = driver.findElements(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a"));
+		System.out.println(elem.size());
+		for(int i=1; i<=elem.size();i++) {
+		WebElement dropdowntextElement= driver.findElement(By.xpath("//li[@class='uiMenuItem uiRadioMenuItem']//following::a["+i+"]"));
+		String dropdowntext= dropdowntextElement.getAttribute("title");
+		System.out.println(dropdowntext);
+			if(dropdowntext.contains("No")) {
+				act.moveToElement(dropdowntextElement).click().perform();
+				test.log(Status.INFO, "Value from Active dropdown is selected");
+				break;
+			}
+		}
 		//Parent Account lookup
 		//Account Name 
-
-		driver.findElement(By.xpath("//*[@class='label inputLabel uiLabel-left form-element__label uiLabel']/span[contains(text(),'Account Name')]/..//following-sibling::input")).sendKeys("TestAccount1");
-		driver.findElement(By.xpath("//input[@class=' default input uiInput uiInputTextForAutocomplete uiInput--default uiInput--input uiInput uiAutocomplete uiInput--default uiInput--lookup']")).sendKeys("Bank of America");
-		//driver.findElement(By.xpath("//*[@class='label inputLabel uiLabel-left form-element__label uiLabel']/span[contains(text(),'Parent Account')]/..//following::div[1]")).sendKeys("ame");
-		
+		type("AccountNameText", prop.getProperty("AccountName"));
+		type("ParentAccountlookup", "Bank of America");
 		//TO select account from dropdown
 		String accountlookup = "//ul/li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']";
 		wait.until(ExpectedConditions.numberOfElementsToBe(By.xpath("//ul/li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']"), 1));
-		/*	
-		String AccountLookup="//*[@class='test-id__section-content slds-section__content section__content']/div/div[3]/div[1]/div/div/div/div/div/div[1]/div/div/div[2]/ul/li[";
-		List<WebElement> Accounts = driver.findElements(By.xpath("//ul/li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']"));
-		System.out.println(Accounts.size());
-		for(int j=1; j<=Accounts.size();j++) {
-			String xpath=AccountLookup+j+"]/a/div[2]";
-			System.out.println(xpath);
-			WebElement Account=driver.findElement(By.xpath(AccountLookup+j+"]/a/div[2]"));
-			System.out.println(Account.getText());
-		if(Account.getText().contains("Bank of America"))
-			Account.click();
-		} */
-	
-		driver.findElement(By.xpath("//ul/li[@class='lookup__item  default uiAutocompleteOption forceSearchInputLookupDesktopOption']")).click();
-		
+		click("lookupoption");
 		//Select SLA from dropdown
-		act.moveToElement(driver.findElement(By.xpath("//*[text()='SLA Serial Number']"))).perform();
-		driver.findElement(By.xpath("//*[text()='SLA']//following::div[1]")).click();
-		driver.findElement(By.xpath("//*[@class='select-options']/ul/li[4]/a")).click();
-		
-		driver.findElement(By.xpath("//*[@class='form-element']")).click();
-		driver.findElement(By.xpath("//div/div[2]/table/tbody/tr[3]/td[5]/span")).click();
-		driver.findElement(By.xpath("//*[text()='SLA Serial Number']/..//following::input[1]")).sendKeys("Aewfbr5431");
-		driver.findElement(By.xpath("//div/div/div[2]/div/div/button[3]/span")).click();
-		test.log(Status.INFO, "Account woudl be created");
+		WebElement SLASerial = getElement("SLASerialNumber");
+		act.moveToElement(SLASerial).perform();
+		click("SLADropdown");
+		click("SLAValue");
+		click("DateTextBox");
+		click("DateValue");
+		type("SLANumber","Aewfbr5431");
+		//Click Save Button
+		click("SaveAccountRecord");
+		if(verify(getElement("AccountdetailsTitle"), prop.getProperty("AccountName"))){
+			test.log(Status.INFO, "Account is created successfully");
+			test.pass("Account is verified successfullu");
+		}else {
+			test.fail("Account creation failed");
+			test.log(Status.INFO, "Account is not created");
+		}
 		
 	}
+	
+	@Test(priority=3)
+	public void DeleteanAccount() {
+		test=extent.createTest("Account Deletion Test");
+		test.log(Status.INFO, "Account will be deleted");
+		WebDriverWait wai = new WebDriverWait(driver, 30);
+		WebElement Opptylink = driver.findElement(By.xpath("//*[@title='Opportunities']"));
+		WebElement accountlink = getElement("AccounttopHatLink");
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+		executor.executeScript("arguments[0].click();", Opptylink);
+		executor.executeScript("arguments[0].click();", accountlink);
+		hardwait();
+		WebElement AccountName = getElement("AccountlistTitle");
+		wai.until(ExpectedConditions.refreshed(ExpectedConditions.presenceOfElementLocated(By.xpath("//div/div/table/tbody/tr[1]/th/span/a"))));
+		String AccountText=AccountName.getText();
+		System.out.println("AccountText -> " +AccountText);
+		if(AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
+			driver.findElement(By.xpath("//div/div/table/tbody/tr[1]/th/span/a/../..//following::td[4]/span/div")).click();
+			driver.findElement(By.xpath("//ul[@class='scrollable']/li[2]/a[@title='Delete']")).click();
+			JavascriptExecutor js = (JavascriptExecutor)driver;
+			
+			wai.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//span[text()='Delete']")))).click();
+			hardwait();	
+			if(!AccountText.equalsIgnoreCase(prop.getProperty("AccountName"))) {
+				test.pass("Account is Deleted Successfully");
+				test.log(Status.INFO, "Account is deleted successfully");
+			}else {
+				test.fail("Account Deletion Failed");
+			}
+		}else {
+			System.out.println("Created record not available");
+			test.fail("Account Deletion Failed");
+		}
+	}
+	
 	
 	@AfterClass
 	public void close(){

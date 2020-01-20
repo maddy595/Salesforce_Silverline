@@ -4,12 +4,12 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="72.575">
+           time="62.564">
   <properties />
   
   
-            <testcase name="VerifySalesOrgTest" time="0.042" classname="salesforceTestCases.LoginTest" />
-                <testcase name="logout" time="0.855" classname="salesforceTestCases.LoginTest" />
-                <testcase name="SalesforceLogin" time="71.678" classname="salesforceTestCases.LoginTest" />
+            <testcase name="VerifySalesOrgTest" time="0.046" classname="salesforceTestCases.LoginTest" />
+                <testcase name="logout" time="1.035" classname="salesforceTestCases.LoginTest" />
+                <testcase name="SalesforceLogin" time="61.483" classname="salesforceTestCases.LoginTest" />
       
 </testsuite>
